@@ -1,0 +1,11 @@
+{
+    "Products": [
+        {
+            "prod_id": 15,
+            "product_name": "молоко",
+            "storage_conditions": -3,
+            "expiration_date": 3
+        }
+    ],
+    "Suppliers": []
+}

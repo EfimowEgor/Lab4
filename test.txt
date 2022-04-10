@@ -1,0 +1,32 @@
+{
+    "Products": [
+        {
+            "prod_id": 10,
+            "product_name": "milk",
+            "storage_conditions": -3,
+            "expiration_date": 3
+        }
+    ],
+        "Suppliers": [
+        {
+            "supplier_name": "sup1",
+            "products_history": [
+                {
+                    "id": 12,
+                    "Delivery date": "2022-04-08 00:00:00",
+                    "Place": "shop1"
+                }
+            ]
+        },
+        {
+            "supplier_name": "sup2",
+            "products_history": [
+                {
+                    "id": 10,
+                    "Delivery date": "2022-04-06 00:00:00",
+                    "Place": "shop13"
+                }
+            ]
+        }
+    ]
+}
