@@ -170,7 +170,7 @@ def open_file() -> str:
 
 def read_data_from_file(filepath):
     try:
-        with open(filepath, 'r') as file:
+        with open(filepath, 'r', encoding='utf-8') as file:
             tmp_res = loads(file.read())
             get_prod_ids_from_data(tmp_res)
             get_sup_names_from_data(tmp_res)
