@@ -46,6 +46,13 @@ class DataBase:
                 if prod['prod_id'] == id_to_delete:
                     del DataBase.data['Products'][i]
                     Product.id_collection.remove(prod['prod_id'])
+
+                    # Каскадное удаление
+                    for k, sup in reversed(list(enumerate(DataBase.data['Suppliers']))):
+                        for j, hist_elem in reversed(list(enumerate(sup['products_history']))):
+                            if hist_elem['id'] == id_to_delete:
+                                del DataBase.data['Suppliers'][k]['products_history'][j]
+
                     something_was_deleted = True
                     DataBase.add_to_base()
             if not something_was_deleted:
