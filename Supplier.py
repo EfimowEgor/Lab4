@@ -22,7 +22,7 @@ class Supplier:
     @staticmethod
     def get_unique_supplier_name() -> str:
         while True:
-            tmp_sup_name = input('Enter the name of the supplier: ')
+            tmp_sup_name = input('Enter the name of the supplier: ').strip()
             if tmp_sup_name not in Supplier.suppliers_names_collection:
                 Supplier.suppliers_names_collection.add(tmp_sup_name)
                 return tmp_sup_name
@@ -70,7 +70,9 @@ class Supplier:
         if sup_name in Supplier.suppliers_names_collection:
             for elem in Supplier.suppliers_collection:
                 if str(elem['supplier_name']) == sup_name:
+                    Supplier.suppliers_names_collection.remove(sup_name)
                     elem['supplier_name'] = tmp_sup_name
+                    Supplier.suppliers_names_collection.add(tmp_sup_name)
         else:
             print('There is no supplier with this name in the database')
 
@@ -128,9 +130,9 @@ class Supplier:
         else:
             id_was_found = False
             if sup_name in Supplier.suppliers_names_collection:
-                for i, sup in enumerate(Supplier.suppliers_collection):
+                for i, sup in reversed(list(enumerate(Supplier.suppliers_collection))):
                     if sup['supplier_name'] == sup_name:
-                        for j, hist_sup in enumerate(sup['products_history']):
+                        for j, hist_sup in reversed(list(enumerate(sup['products_history']))):
                             if hist_sup['id'] == identifier:
                                 del Supplier.suppliers_collection[i]['products_history'][j]
                                 id_was_found = True
